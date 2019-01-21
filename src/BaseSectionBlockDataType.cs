@@ -31,7 +31,7 @@ namespace Graph.Components.BaseSectionBlock
 			      ""label"": ""CTA Button Link"",
 			      ""description"": """",
 			      ""key"": ""ctaButton"",
-			      ""view"": ""linkpicker"",
+			      ""view"": ""/App_Plugins/GibeLinkPicker/linkpicker.html"",
 			      ""modifier"": ""json""
 			    }
 			  ],
