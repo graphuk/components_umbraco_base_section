@@ -1,0 +1,29 @@
+@using System.Web.Mvc.Html
+@using Skybrud.Umbraco.GridData
+@using Skybrud.Umbraco.GridData.Extensions
+
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<GridRow>
+
+<div>
+	<div class="container">
+		@if (Model.HasConfig )
+		{
+			<div>@Model.Config["title"]</div>
+		}
+		<div class="row">
+			@foreach (var area in Model.Areas)
+			{
+				
+				<div class="col-md-@area.Grid column">
+					<div>
+						@foreach (var control in area.Controls)
+						{
+							@Html.RenderGridControl(control, control.Editor.Render)
+
+						}
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</div>

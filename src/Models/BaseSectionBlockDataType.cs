@@ -1,4 +1,4 @@
-﻿using Umbraco.Core.Models;
+using Umbraco.Core.Models;
 using Vega.USiteBuilder;
 
 namespace Graph.Components.BaseSectionBlock
@@ -31,7 +31,7 @@ namespace Graph.Components.BaseSectionBlock
 			      ""label"": ""CTA Button Link"",
 			      ""description"": """",
 			      ""key"": ""ctaButton"",
-			      ""view"": ""/App_Plugins/BaseSection/GibeLinkPicker/linkpicker.html"",
+			      ""view"": ""/App_Plugins/GibeLinkPicker/picker.html"",
 			      ""modifier"": ""json""
 			    }
 			  ],
