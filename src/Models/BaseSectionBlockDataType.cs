@@ -19,20 +19,40 @@ namespace Graph.Components.BaseSectionBlock
 			      ""label"": ""Title"",
 			      ""description"": """",
 			      ""key"": ""title"",
-			      ""view"": ""requiredfield""
+			      ""view"": ""textstring"",
+				  ""applyTo"" : ""row""
 			    },
 			    {
 			      ""label"": ""Summary"",
 			      ""description"": """",
 			      ""key"": ""summary"",
-			      ""view"": ""textarea""
+			      ""view"": ""textarea"",
+				  ""applyTo"" : ""row""
 			    },
 			    {
 			      ""label"": ""CTA Button Link"",
 			      ""description"": """",
 			      ""key"": ""ctaButton"",
 			      ""view"": ""/App_Plugins/GibeLinkPicker/picker.html"",
-			      ""modifier"": ""json""
+			      ""modifier"": ""json"",
+				  ""applyTo"" : ""row""
+			    },
+				{
+			      ""label"": ""Theme"",
+			      ""description"": """",
+			      ""key"": ""theme"",
+			      ""view"": ""radiobuttonlist"",
+				  ""applyTo"" : ""row"",
+			      ""prevalues"": [
+			        {
+						""label"": ""Primary"",
+						""value"": ""primary""
+					},
+					{
+						""label"": ""Secondary"",
+						""value"": ""secondary""
+					}
+				  ]
 			    }
 			  ],
 			  ""columns"": 12,
@@ -49,8 +69,8 @@ namespace Graph.Components.BaseSectionBlock
 			  ],
 			  ""layouts"": [
 			    {
-			      ""label"": ""Base Section (One Column)"",
-			      ""name"": ""Base Section (One Column)"",
+			      ""label"": ""Base Section"",
+			      ""name"": ""Base Section"",
 			      ""areas"": [
 			        {
 			          ""grid"": 12,
@@ -61,22 +81,6 @@ namespace Graph.Components.BaseSectionBlock
 			          ""maxItems"": 0
 			        }
 			      ]
-			    },
-			    {
-			      ""name"": ""Base Section (Two Column)"",
-			      ""areas"": [
-			        {
-			          ""grid"": 6,
-			          ""allowAll"": true,
-			          ""maxItems"": 0
-			        },
-			        {
-			          ""grid"": 6,
-			          ""allowAll"": true,
-			          ""maxItems"": 0
-			        }
-			      ],
-			      ""label"": ""Base Section (Two Column)""
 			    }
 			  ]
 			}";

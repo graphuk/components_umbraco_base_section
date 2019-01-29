@@ -1,0 +1,57 @@
+@maxContentWidth: 1170px;
+@tablet: ~"(min-width: 736px)";
+@tabletLandscape: ~"(min-width: 824px)";
+@desktop: ~"(min-width: 1025px)";
+@desktopSideSpace: 40px;
+@tabletSideSpace: 50px;
+@tabletLandscapeSideSpace: 35px;
+@mobileSideSpace: 20px;
+@sectionPaddingMobile: 30px;
+@sectionPaddingDesktop: 60px;
+@marginTop: 30px;
+
+.section {
+	box-sizing: border-box;
+	position: relative;
+	padding: @sectionPaddingMobile 0;
+
+	@media @desktop {
+		padding: @sectionPaddingDesktop;
+	}
+
+	&__container {
+		padding: 0 @mobileSideSpace;
+		margin: 0 auto;
+
+		@media @tabletLandscape {
+			padding: 0 @tabletLandscapeSideSpace;
+		}
+
+		@media @tablet {
+			padding: 0 @tabletSideSpace;
+		}
+
+		@media @desktop {
+			max-width: @maxContentWidth;
+			padding: 0 @desktopSideSpace;
+		}
+	}
+
+	&__title {
+		font-size: 3em;
+	}
+
+	&__summary {
+		font-size: 1em;
+		margin-top: @marginTop;
+	}
+
+	&__placeholder {
+		margin-top: @marginTop;
+	}
+
+	&__button {
+		font-size: 1em;
+		margin-top:@marginTop;
+	}
+}

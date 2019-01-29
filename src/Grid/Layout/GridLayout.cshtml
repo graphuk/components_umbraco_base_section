@@ -2,14 +2,10 @@
 @using Skybrud.Umbraco.GridData.Extensions
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<GridDataModel>
 
-@{
-	<div class="umb-grid">
-		@foreach (var section in Model.Sections) {
-			<div class="grid-section">
-				@foreach (var row in section.Rows) {
-					@Html.RenderGridRowOrFallback(row, "~/App_Plugins/BaseSection/Grid/Rows/GridRow.cshtml")
-				}
-			</div>
+@foreach (var section in Model.Sections) {
+	
+		foreach (var row in section.Rows) {
+			@Html.RenderGridRowOrFallback(row, "~/App_Plugins/BaseSection/Grid/Rows/GridRow.cshtml")
 		}
-	</div>
+	
 }

@@ -12,6 +12,10 @@ Installation steps:
 5. Umbraco will create the data type on startup application
 
 Example of usages:
+Migration:
+[DocumentTypeProperty(UmbracoPropertyType.Other, OtherType = typeof(BaseSectionBlockDataType), Name = "Content Blocks", Tab = "Content", Alias = "contentBlocks")]
+public string ContentBlocks { get; set; }
+
 Model:
 public GridDataModel ContentBlocks { get; set; } 
 

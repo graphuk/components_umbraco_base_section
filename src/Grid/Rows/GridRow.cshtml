@@ -1,29 +1,38 @@
-@using System.Web.Mvc.Html
+@using Newtonsoft.Json.Linq
 @using Skybrud.Umbraco.GridData
 @using Skybrud.Umbraco.GridData.Extensions
-
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<GridRow>
 
-<div>
-	<div class="container">
-		@if (Model.HasConfig )
+<div class="section section_@(Model.Config.ContainsKey("theme") ? Model.Config["theme"] : "")">
+	<div class="section__container">
+		@if (Model.HasConfig)
 		{
-			<div>@Model.Config["title"]</div>
+			<div class="section__content">
+				@if (Model.Config.ContainsKey("title"))
+				{
+					<div class="section__title">@Model.Config["title"]</div>
+				}
+				@if (Model.Config.ContainsKey("summary"))
+				{
+					<div class="section__summary">@Model.Config["summary"]</div>
+				}
+			</div>
 		}
-		<div class="row">
+		<div class="section__placeholder">
 			@foreach (var area in Model.Areas)
 			{
-				
-				<div class="col-md-@area.Grid column">
-					<div>
-						@foreach (var control in area.Controls)
-						{
-							@Html.RenderGridControl(control, control.Editor.Render)
-
-						}
-					</div>
-				</div>
+				foreach (var control in area.Controls)
+				{
+					@Html.RenderGridControl(control, control.Editor.Render)
+				}
 			}
 		</div>
+		@if (Model.Config.ContainsKey("ctaButton"))
+		{
+			var button = JObject.Parse(Model.Config["ctaButton"]);
+			<div class="section__button-container">
+				<a class="section__button" href="@button["url"]" target="@button["target"]">@button["name"]</a>
+			</div>
+		}
 	</div>
 </div>
