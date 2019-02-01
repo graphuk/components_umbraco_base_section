@@ -13,11 +13,27 @@ Installation steps:
 
 Example of usages:
 Migration:
-[DocumentTypeProperty(UmbracoPropertyType.Other, OtherType = typeof(BaseSectionBlockDataType), Name = "Content Blocks", Tab = "Content", Alias = "contentBlocks")]
-public string ContentBlocks { get; set; }
+```c#
+using Vega.USiteBuilder;
+
+namespace Graph.Components.Models.Compositions
+{
+	[DocumentType(Name = "Content Composition", Alias = "contentComposition")]
+	public class ContentComposition : DocumentTypeBase
+	{
+		[DocumentTypeProperty(UmbracoPropertyType.Other, OtherType = typeof(BaseSectionBlockDataType), Name = "Content Blocks", Tab = "Content", Alias = "contentBlocks")]
+		public string ContentBlocks { get; set; }
+	}
+}
+
+```
 
 Model:
+```c#
 public GridDataModel ContentBlocks { get; set; } 
+```
 
 View:
+```c#
 @Html.Partial("~/App_Plugins/BaseSection/Grid/Layout/GridLayout.cshtml", Model.ContentBlocks)
+```
