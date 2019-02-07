@@ -3,18 +3,18 @@
 @using Skybrud.Umbraco.GridData.Extensions
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<GridRow>
 
-<div class="section section_@(Model.Config.ContainsKey("theme") ? Model.Config["theme"] : "")">
+<div class="section section_@(Model.Config.ContainsKey("themeBaseSection") ? Model.Config["themeBaseSection"] : "")">
 	<div class="section__container">
 		@if (Model.HasConfig)
 		{
 			<div class="section__content">
-				@if (Model.Config.ContainsKey("title"))
+				@if (Model.Config.ContainsKey("titleBaseSection"))
 				{
-					<div class="section__title">@Model.Config["title"]</div>
+					<div class="section__title">@Model.Config["titleBaseSection"]</div>
 				}
-				@if (Model.Config.ContainsKey("summary"))
+				@if (Model.Config.ContainsKey("summaryBaseSection"))
 				{
-					<div class="section__summary">@Model.Config["summary"]</div>
+					<div class="section__summary">@Model.Config["summaryBaseSection"]</div>
 				}
 			</div>
 		}
@@ -27,9 +27,9 @@
 				}
 			}
 		</div>
-		@if (Model.Config.ContainsKey("ctaButton"))
+		@if (Model.Config.ContainsKey("ctaButtonBaseSection"))
 		{
-			var button = JObject.Parse(Model.Config["ctaButton"]);
+			var button = JObject.Parse(Model.Config["ctaButtonBaseSection"]);
 			<div class="section__button-container">
 				<a class="section__button" href="@button["url"]" target="@button["target"]">@button["name"]</a>
 			</div>
