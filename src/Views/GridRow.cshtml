@@ -1,4 +1,5 @@
-@using Newtonsoft.Json.Linq
+@using Gibe.LinkPicker.Umbraco.Models
+@using Newtonsoft.Json
 @using Skybrud.Umbraco.GridData
 @using Skybrud.Umbraco.GridData.Extensions
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<GridRow>
@@ -27,11 +28,12 @@
 				}
 			}
 		</div>
-		@if (Model.Config.ContainsKey("ctaButtonBaseSection"))
+		@if (Model.Config.ContainsKey("cTAButtonLinkBaseSection"))
 		{
-			var button = JObject.Parse(Model.Config["cTAButtonLinkBaseSection"]);
+			var button = JsonConvert.DeserializeObject<LinkPicker>(Model.Config["cTAButtonLinkBaseSection"]);
+			var link = button.Url + (string.IsNullOrEmpty(button.Hashtarget) == false ? $"#{button.Hashtarget}" : string.Empty);
 			<div class="section__button-container">
-				<a class="section__button" href="@button["url"]" target="@button["target"]">@button["name"]</a>
+				<a class="section__button" href="@link" target="@button.Target">@button.Name</a>
 			</div>
 		}
 	</div>
