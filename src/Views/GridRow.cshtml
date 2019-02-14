@@ -1,0 +1,40 @@
+@using Gibe.LinkPicker.Umbraco.Models
+@using Newtonsoft.Json
+@using Skybrud.Umbraco.GridData
+@using Skybrud.Umbraco.GridData.Extensions
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<GridRow>
+
+<div class="section section_@(Model.Config.ContainsKey("themeBaseSection") ? Model.Config["themeBaseSection"] : "")">
+	<div class="section__container">
+		@if (Model.HasConfig)
+		{
+			<div class="section__content">
+				@if (Model.Config.ContainsKey("titleBaseSection"))
+				{
+					<div class="section__title">@Model.Config["titleBaseSection"]</div>
+				}
+				@if (Model.Config.ContainsKey("summaryBaseSection"))
+				{
+					<div class="section__summary">@Model.Config["summaryBaseSection"]</div>
+				}
+			</div>
+		}
+		<div class="section__placeholder">
+			@foreach (var area in Model.Areas)
+			{
+				foreach (var control in area.Controls)
+				{
+					@Html.RenderGridControl(control, control.Editor.Render)
+				}
+			}
+		</div>
+		@if (Model.Config.ContainsKey("cTAButtonLinkBaseSection"))
+		{
+			var button = JsonConvert.DeserializeObject<LinkPicker>(Model.Config["cTAButtonLinkBaseSection"]);
+			var link = button.Url + (string.IsNullOrEmpty(button.Hashtarget) == false ? $"#{button.Hashtarget}" : string.Empty);
+			<div class="section__button-container">
+				<a class="section__button" href="@link" target="@button.Target">@button.Name</a>
+			</div>
+		}
+	</div>
+</div>
